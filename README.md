@@ -1,78 +1,86 @@
-# Flask Blog Application
-A dynamic blog platform built with Flask, featuring API integration for content management and responsive template rendering.
+# Blog Application
+A dynamic blog platform built with Flask and Bootstrap, featuring clean design, modular templates, and content management through API integration.
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue)
 ![Flask](https://img.shields.io/badge/Flask-Backend-red)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.2.3-purple)
 ![API](https://img.shields.io/badge/JSON-API-green)
-![HTML](https://img.shields.io/badge/HTML-Templates-orange)
 
 ## 🎯 Overview
-This project creates a blog platform that:
-1. Fetches articles from API
-2. Renders dynamic content
-3. Handles article routing
-4. Displays full posts
-5. Manages blog layout
+This project creates a professional blog platform that:
+1. Implements responsive design
+2. Uses template inheritance
+3. Integrates external API
+4. Features modular components
+5. Includes contact forms
 
 ## 🌐 Application Features
 ### Backend Components
 - Flask routing system
-- API integration
-- Data handling
+- Template inheritance
 - URL management
-- Error handling
+- Static asset handling
+- API integration
 
 ### Frontend Elements
-- Responsive templates
-- Article previews
-- Dynamic content
-- Clean typography
-- Custom styling
+- Bootstrap integration
+- Responsive design
+- Navigation bar
+- Contact form
+- Social links
 
 ## 🔧 Technical Components
 ### Route Management System
 ```python
-@app.route('/post/<int:article_id>')
-def post(article_id):
-    for article in response.json():
-        if article_id == article['id']:
-            return render_template(
-                "post.html",
-                article_json=article
-            )
+@app.route('/')
+@app.route('/index.html')
+def home():
+    url_dict = get_url_dict()
+    return render_template('index.html',
+                           url=url_dict,
+                           blog_posts=blog_data_json)
+
+@app.route('/post/<int:blog_id>.html')
+def post(blog_id):
+    url_dict = get_url_dict()
+    for blog in blog_data_json:
+        if blog['id'] == blog_id:
+            return render_template('post.html',
+                                   url=url_dict,
+                                   blog_post=blog)
 ```
 
 ### Key Features
 1. **Content Management**
    - API integration
-   - JSON processing
-   - Article routing
-   - Content rendering
+   - Dynamic routing
+   - Template inheritance
+   - Component reuse
 
-2. **Template System**
-   - Dynamic rendering
-   - Content mapping
-   - Layout structure
-   - Responsive design
+2. **Page Structure**
+   - Home page
+   - Blog posts
+   - About page
+   - Contact form
 
-3. **Data Processing**
-   - JSON handling
-   - Route parameters
-   - Article filtering
-   - Content display
+3. **Asset Management**
+   - Static files
+   - Bootstrap CDN
+   - Font Awesome
+   - Google Fonts
 
 ## 💻 Implementation Details
 ### Project Structure
 - Flask application core
-- HTML templates
-- Static assets
-- Route handlers
+- Modular templates
+- Bootstrap integration
+- Font Awesome icons
 
-### Data Flow
-- API data fetching
-- Content processing
-- Template rendering
-- User presentation
+### Components
+- Header template
+- Navigation bar
+- Footer template
+- Contact form
 
 ## 🚀 Usage
 1. Install required packages:
@@ -85,33 +93,37 @@ pip install flask requests
 python main.py
 ```
 
-## 🎯 Application Rules
-1. Configure Flask app
-2. Set up API connection
-3. Design templates
-4. Handle routing
-5. Manage content
-
-## 🛠️ Project Structure
+## 🎯 Project Structure
 ```
 flask-blog/
-├── main.py           # Flask application
-├── post.py          # Post model
+├── main.py          # Flask application
+├── url.py           # URL management
+├── static/
+│   ├── assets/     # Images and assets
+│   ├── css/        # Stylesheets
+│   └── js/         # JavaScript files
 └── templates/
     ├── index.html    # Home page
-    └── post.html     # Article page
+    ├── post.html     # Article page
+    ├── about.html    # About page
+    ├── contact.html  # Contact page
+    ├── header.html   # Header component
+    ├── footer.html   # Footer component
+    └── navigation_bar.html # Navigation
 ```
 
 ## 📊 Features
-### Route Handling
-- Home page display
-- Article routing
-- Content mapping
-- Dynamic URLs
+### Page Components
+- Dynamic blog posts
+- Responsive navigation
+- Contact form
+- Social links
+- About section
 
-### Content Display
-- Article previews
-- Full post views
+### Design Elements
+- Bootstrap framework
+- Google Fonts
+- Font Awesome icons
 - Responsive layout
 - Clean typography
 
