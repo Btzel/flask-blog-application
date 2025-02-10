@@ -9,9 +9,9 @@ from wtforms.validators import DataRequired, URL
 from flask_ckeditor import CKEditor, CKEditorField
 from datetime import date
 from url import get_url_dict
-
+import os
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "8BYkEfBA6O6burakWlSihBXox7C0sKR6b"
+app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
@@ -72,10 +72,13 @@ def create_new_post():
             author=form.author.data,
             date=date.today().strftime("%B %d, %Y")
         )
+        print(new_post.date)
         db.session.add(new_post)
         db.session.commit()
         return redirect(url_for("home"))
     return render_template('make-post.html',url=url_dict,form=form)
+
+@app.route("/post/edit/<int:post_id>", methods=["GET", "POST"])
 
 @app.route('/about.html')
 def about():
